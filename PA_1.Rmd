@@ -1,12 +1,16 @@
 ---
 title: 'Reproducible Research: Peer Assessment 1'
-output:
-  md_document: default
-  html_document: default
-  html_notebook: default
-  keep_md: yes
-  figure_directory: yes
+author: "Tak Au"
+date: "April 17, 2017"
+output: 
+  html_document: 
+    keep_md: yes
 ---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.path='Figs/', echo = TRUE, warning = FALSE, message = FALSE)
+```
+
 This assignment makes use of data from a personal activity monitoring device. This device collects data at 5 minute intervals through out the day. The data consists of two months of data from an anonymous individual collected during the months of October and November, 2012 and include the number of steps taken in 5 minute intervals each day.
 
 Dataset: [Activity monitoring data](https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip) [52K]
@@ -22,13 +26,8 @@ The dataset is stored in a comma-separated-value (CSV) file and there are a tota
 
 
 setwd("C:/Users/...")
-library(data.table)
 
 initiate R packages
-```{r global_options, include=FALSE}
-knitr::opts_chunk$set(fig.path='Figs/', echo = TRUE, warning = FALSE, message = FALSE)
-```
-
 ```{r}
 library(data.table)
 library(ggvis)
@@ -57,7 +56,6 @@ medianSteps
 ## What is the average daily activity pattern?
 ```{r}
 dt_interval <- dt_activity[, mean(steps, na.rm = TRUE), keyby = interval]
-summary(dt_interval)
 ```
 
 #### Time series plot of the average number of steps taken
@@ -116,8 +114,3 @@ qplot(interval, V1, data = weekSteps,
       main = "Differences in activity patterns between weekdays and weekends",
       facets = WD~.)
 ```
-
-
-
-
-
