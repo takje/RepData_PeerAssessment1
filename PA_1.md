@@ -195,6 +195,7 @@ var plot_id722609234_spec = {
   },
   "handlers": null
 };
+![](Figs/unnamed-chunk-16-1.png)<!-- -->
 ggvis.getPlot("plot_id722609234").parseSpec(plot_id722609234_spec);
 </script><!--/html_preserve-->
 #### Calculate and report the mean and median of the total number of steps taken per day
@@ -366,6 +367,7 @@ var plot_id809618147_spec = {
   },
   "handlers": null
 };
+![](Figs/unnamed-chunk-16-2.png)<!-- -->
 ggvis.getPlot("plot_id809618147").parseSpec(plot_id809618147_spec);
 </script><!--/html_preserve-->
 
@@ -575,6 +577,7 @@ var plot_id798348392_spec = {
   },
   "handlers": null
 };
+![](Figs/unnamed-chunk-16-3.png)<!-- -->
 ggvis.getPlot("plot_id798348392").parseSpec(plot_id798348392_spec);
 </script><!--/html_preserve-->
 Calculation and the histogram show there is only slight differ in value of steps taken per day after missing value are imputed, however the frequency of the maximum steps/interval has increased.
@@ -648,4 +651,4 @@ qplot(interval, V1, data = weekSteps,
       facets = WD~.)
 ```
 
-![](Figs/unnamed-chunk-16-1.png)<!-- -->
+![](Figs/unnamed-chunk-16-4.png)<!-- -->
