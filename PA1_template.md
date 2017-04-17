@@ -1,9 +1,11 @@
 ---
 title: 'Reproducible Research: Peer Assessment 1'
 output:
-  keep_md: yes
-  html_notebook: default
+  md_document: default
   html_document: default
+  html_notebook: default
+  keep_md: yes
+  figure_directory: yes
 ---
 This assignment makes use of data from a personal activity monitoring device. This device collects data at 5 minute intervals through out the day. The data consists of two months of data from an anonymous individual collected during the months of October and November, 2012 and include the number of steps taken in 5 minute intervals each day.
 
@@ -23,6 +25,10 @@ setwd("C:/Users/...")
 library(data.table)
 
 initiate R packages
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(fig.path='Figs/', echo = TRUE, warning = FALSE, message = FALSE)
+```
+
 ```{r}
 library(data.table)
 library(ggvis)
