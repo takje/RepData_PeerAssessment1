@@ -88,7 +88,10 @@ sumStepsFill <- dt_ReplaceNA[, sum(steps), keyby = date]
 ```
 #### Histogram of the total number of steps taken each day after missing values are imputed. 
 ```{r}
-ggplot(sumStepsFill, aes(V1)) + geom_histogram(colour = "#56d81a") + xlab("Total steps after missing values are imputed") + ylab("Frequency")
+ggplot(sumStepsFill, aes(V1)) + 
+        geom_histogram(colour = "#56d81a") + 
+        xlab("Total steps after missing values are imputed") + 
+        ylab("Frequency")
 ```
 Calculation and the histogram show there is only slight differ in value of steps taken per day after missing value are imputed, however the frequency of the maximum steps/interval has increased.
 ```{r}
