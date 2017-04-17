@@ -30,7 +30,7 @@ setwd("C:/Users/...")
 initiate R packages
 ```{r}
 library(data.table)
-library(ggvis)
+library(ggplot2)
 ```
 
 ## Loading and preprocessing the data
@@ -41,11 +41,14 @@ dt_activity <- fread("activity.csv")
 ```{r}
 sumSteps <- dt_activity[, .(sum(steps)), keyby = date]
 ```
-
 #### plot total number of steps taken per day
 ```{r}
-sumSteps %>% ggvis(~V1) %>% layer_histograms(fill := "#B74C4C") %>% add_axis("x", title = "Total steps") %>% add_axis("y", title = "Frequency")
+ggplot(sumSteps, aes(V1)) + 
+        geom_histogram(colour = "pink") + 
+        xlab("Total steps") +
+        ylab("Frequency")
 ```
+
 #### Calculate and report the mean and median of the total number of steps taken per day
 ```{r}
 meanSteps <- sumSteps[, mean(V1, na.rm = TRUE)]
@@ -57,10 +60,11 @@ medianSteps
 ```{r}
 dt_interval <- dt_activity[, mean(steps, na.rm = TRUE), keyby = interval]
 ```
-
 #### Time series plot of the average number of steps taken
 ```{r}
-dt_interval %>% ggvis(~interval, ~V1) %>% layer_lines() %>% add_axis("y", title = "average number of steps")
+ggplot(dt_interval, aes(interval, V1)) +
+        geom_line() +
+        ylab("average number of steps")
 ```
 
 #### Calculate the 5-minute interval that, on average, contains the maximum number of steps
@@ -84,7 +88,7 @@ sumStepsFill <- dt_ReplaceNA[, sum(steps), keyby = date]
 ```
 #### Histogram of the total number of steps taken each day after missing values are imputed. 
 ```{r}
-sumStepsFill %>% ggvis(~V1) %>% layer_histograms(fill := "#56d81a") %>% add_axis("x", title = "Total steps after missing values are imputed") %>% add_axis("y", title = "Frequency")
+ggplot(sumStepsFill, aes(V1)) + geom_histogram(colour = "#56d81a") + xlab("Total steps after missing values are imputed") + ylab("Frequency")
 ```
 Calculation and the histogram show there is only slight differ in value of steps taken per day after missing value are imputed, however the frequency of the maximum steps/interval has increased.
 ```{r}
@@ -107,7 +111,6 @@ weekSteps <- dt_ReplaceNA[, mean(steps), keyby = c("WD", "interval")]
 
 #### Panel plot containing a time series plot of the 5-minute interval and the average number of steps taken, averaged across all weekday days or weekend days.
 ```{r}
-library(ggplot2)
 qplot(interval, V1, data = weekSteps, 
       geom = "line", 
       ylab = "average number of steps",
