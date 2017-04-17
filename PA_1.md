@@ -195,6 +195,7 @@ var plot_id722609234_spec = {
   },
   "handlers": null
 };
+ggvis.getPlot("Figs/unnamed-chunk-16-1.png")
 ![](Figs/unnamed-chunk-16-1.png)<!-- -->
 ggvis.getPlot("plot_id722609234").parseSpec(plot_id722609234_spec);
 </script><!--/html_preserve-->
